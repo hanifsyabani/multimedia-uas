@@ -3,7 +3,6 @@
 import { useState } from "react";
 import {
   Map,
-  Video,
   Camera,
   BookOpen,
   UtensilsCrossed,
@@ -16,12 +15,13 @@ import Budaya from "./budaya";
 import Galeri from "./galeri";
 
 export default function DetailProvinsi({ nama }: { nama: string }) {
+  const [activeTab, setActiveTab] = useState("info");
+
   const data = provinces.find((province) => province.nama === nama);
 
   if (!data) {
     return <div>Provinsi tidak ditemukan</div>;
   }
-  const [activeTab, setActiveTab] = useState("info");
 
   return (
     <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">

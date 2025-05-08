@@ -5,7 +5,6 @@ import Link from "next/link";
 import { team } from "@/lib/items";
 
 export default function TentangView() {
-  const [activeAccordion, setActiveAccordion] = useState("visi");
 
   return (
     <div className="bg-gradient-to-b from-blue-50 to-white min-h-screen">

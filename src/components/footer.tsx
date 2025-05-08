@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-[#152259] text-white py-8 px-4">
@@ -12,15 +14,29 @@ export default function Footer() {
         <div>
           <h4 className="text-lg font-semibold">Menu</h4>
           <ul className="mt-2 space-y-1 text-sm text-gray-300">
-            <li><a href="/" className="hover:text-white">Beranda  </a></li>
-            <li><a href="/provinsi" className="hover:text-white">Jelajah</a></li>
-            <li><a href="/video" className="hover:text-white">Tentang</a></li>
+            <li>
+              <Link href="/" className="hover:text-white">
+                Beranda{" "}
+              </Link>
+            </li>
+            <li>
+              <Link href="/provinsi" className="hover:text-white">
+                Jelajah
+              </Link>
+            </li>
+            <li>
+              <Link href="/video" className="hover:text-white">
+                Tentang
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-lg font-semibold">Kontak</h4>
-          <p className="mt-2 text-sm text-gray-300">Email: info@jelajahnusa.id</p>
+          <p className="mt-2 text-sm text-gray-300">
+            Email: info@jelajahnusa.id
+          </p>
           <p className="text-sm text-gray-300">Instagram: @jelajahnusa</p>
         </div>
       </div>

@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 const navLink = [
@@ -23,7 +22,6 @@ const navLink = [
 
 export default function MainNav() {
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
     <div className="z-10 relative">
