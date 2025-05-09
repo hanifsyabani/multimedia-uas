@@ -1,13 +1,13 @@
 import Jelajah from "@/components/jelajah/jelajah";
 import MainNav from "@/components/main-nav";
 
-interface PageProps {
+type PageProps = {
   params: {
     nama: string;
   };
-}
+};
 
-export default function page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
   return (
     <>
       <MainNav />
