@@ -95,7 +95,21 @@ export const CardBody = ({
   );
 };
 
-export const CardItem = ({
+export const CardItem = React.forwardRef<
+  HTMLDivElement,
+  {
+    as?: React.ElementType;
+    children: React.ReactNode;
+    className?: string;
+    translateX?: number | string;
+    translateY?: number | string;
+    translateZ?: number | string;
+    rotateX?: number | string;
+    rotateY?: number | string;
+    rotateZ?: number | string;
+    [key: string]: any;
+  }
+>(({
   as: Tag = "div",
   children,
   className,
@@ -106,44 +120,35 @@ export const CardItem = ({
   rotateY = 0,
   rotateZ = 0,
   ...rest
-}: {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  translateX?: number | string;
-  translateY?: number | string;
-  translateZ?: number | string;
-  rotateX?: number | string;
-  rotateY?: number | string;
-  rotateZ?: number | string;
-  [key: string]: any;
-}) => {
+}, forwardedRef) => {
   const ref = useRef<HTMLDivElement>(null);
+  const resolvedRef = forwardedRef || ref;
   const [isMouseEntered] = useMouseEnter();
 
-  useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
   const handleAnimations = () => {
-    if (!ref.current) return;
+    const refElement = (resolvedRef as React.RefObject<HTMLDivElement>).current;
+    if (!refElement) return;
     if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+      refElement.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
     } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+      refElement.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
     }
   };
 
+  useEffect(() => {
+    handleAnimations();
+  }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ]);
+
   return (
     <Tag
-      ref={ref}
+      ref={resolvedRef}
       className={cn("w-fit transition duration-200 ease-linear", className)}
       {...rest}
     >
       {children}
     </Tag>
   );
-};
+});
 
 // Create a hook to use the context
 export const useMouseEnter = () => {
