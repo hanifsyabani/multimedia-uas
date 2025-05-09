@@ -1,17 +1,20 @@
+import { FC } from "react";
 import Jelajah from "@/components/jelajah/jelajah";
 import MainNav from "@/components/main-nav";
 
-type PageProps = {
+export type PageProps = {
   params: {
     nama: string;
   };
 };
 
-export default async function Page({ params }: PageProps) {
+const Page: FC<PageProps> = async ({ params }) => {
   return (
     <>
       <MainNav />
       <Jelajah nama={params.nama} />
     </>
   );
-}
+};
+
+export default Page;
