@@ -76,6 +76,9 @@ export const CardContainer = ({
   );
 };
 
+// Adding display name for CardContainer
+CardContainer.displayName = "CardContainer";
+
 export const CardBody = ({
   children,
   className,
@@ -94,6 +97,9 @@ export const CardBody = ({
     </div>
   );
 };
+
+// Adding display name for CardBody
+CardBody.displayName = "CardBody";
 
 export const CardItem = React.forwardRef<
   HTMLDivElement,
@@ -149,6 +155,9 @@ export const CardItem = React.forwardRef<
     </Tag>
   );
 });
+
+// Adding display name for CardItem
+CardItem.displayName = "CardItem";
 
 // Create a hook to use the context
 export const useMouseEnter = () => {
